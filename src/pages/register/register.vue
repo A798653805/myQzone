@@ -38,6 +38,7 @@
 </style>
 
 <script>
+  import axios from '../../../node_modules/axios/dist/axios'
   export default {
     // 组件
     components: {},
@@ -72,17 +73,31 @@
       returnLogin() {
         window.location.href = 'http://localhost:8080/#/login';
       },
+      //发送数据
+      register() {
+        axios.post('/user', {
+          username: this.registerForm.username,
+          password: this.registerForm.password,
+        })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
       //验证登录规则
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.register();
           } else {
             console.log('error submit!!');
             return false;
           }
         });
-      }
+      },
+
     },
 
     // dom创建
