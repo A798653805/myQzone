@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.post('/register',function (req,res) {
+  res.send('cheng');
+})
+
+
 module.exports = router;

@@ -6,8 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Expss' });
 });
 
-router.post('/user',function (req,res) {
-  res.send('cheng');
-})
 
 module.exports = router;
