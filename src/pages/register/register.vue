@@ -18,8 +18,8 @@
           <el-form-item label="密码" prop="password">
             <el-input type="password" v-model="registerForm.password" class="input" size="small" placeholder="请输入密码"></el-input>
           </el-form-item>
-          <el-form-item label="确认密码" prop="repassword">
-            <el-input type="password" v-model="registerForm.repassword" class="input" size="small" placeholder="请输入密码"></el-input>
+          <el-form-item label="确认密码" prop="repassword" id="repwd">
+            <el-input type="password" v-model="registerForm.repassword" class="input" size="small" placeholder="请输入密码" @blur="validatePwd"></el-input>
           </el-form-item>
           <el-form-item class="form-btn">
             <el-button type="primary" class="reg-btn" @click="submitForm('rulesForm')">注册</el-button>
@@ -38,78 +38,6 @@
 </style>
 
 <script>
-  import axios from '../../../node_modules/axios/dist/axios'
-  export default {
-    // 组件
-    components: {},
-    // 绑定数据
-    data() {
-      return {
-        registerForm:{
-          username: '',
-          password: '',
-          repassword: ''
-        },
-        rules: {
-          username: [
-            {required: true, message: '请输入用户名', trigger: 'blur'},
-            {min: 6, max: 14, message: '长度在 6 到 14 个字符', trigger: 'blur'}
-          ],
-          password: [
-            {required: true, message: '请输入密码', trigger:'blur'},
-            {min: 6, max: 14, message: '长度在 6 到 14 个字符', trigger: 'blur'}
-          ],
-          repassword:[
-            {required: true, message: '请再次输入密码', trigger:'blur'},
-            {min: 6, max: 14, message: '长度在 6 到 14 个字符', trigger: 'blur'}
-          ]
-        }
-      };
-    },
-
-    // 方法
-    methods: {
-      //返回登录页
-      returnLogin() {
-        window.location.href = 'http://localhost:8080/#/login';
-      },
-      //发送数据
-      register() {
-        axios.post('/user', {
-          username: this.registerForm.username,
-          password: this.registerForm.password,
-        })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      },
-      //验证登录规则
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.register();
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-
-    },
-
-    // dom创建
-    created() {
-      setTimeout(function () {
-        this.showFlag = true;
-        console.log(this.showFlag);
-      },2000);
-    },
-
-    // dom挂载完成
-    mounted() {
-    }
-  }
+  import {register} from './register';
+  export default register;
 </script>
