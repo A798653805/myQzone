@@ -41,7 +41,7 @@ let register = {
                 username: this.registerForm.username,
                 password: this.registerForm.password,
             })
-                .then(function (response) {
+                .then( (response)=> {
                     this.$message({
                         message: '注册成功,3秒钟后自动返回登录页面',
                         type: 'success'
@@ -57,7 +57,7 @@ let register = {
         //验证登录规则
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
-                if (valid && this.validatePwd()) {
+                if (valid && this.validatePwd() && this.validateUname()) {
                    this.register();
                 } else {
                     console.log('error submit!!');
@@ -89,7 +89,24 @@ let register = {
                     return true;
                 }
             }
+        },
+        /**
+         * 验证用户名重复
+         */
+        validateUname() {
+            if(this.registerForm.username.length >= 6 && this.registerForm.username.length <= 14){
+                axios.post('/api/users/uname',{
+                    username: this.registerForm.username
+                }).then((res)=>{
+                    console.log(res.data.data.flag);
+                    return res.data.flag;
+                }).catch((err)=>{
+                    console.log(err);
+                    return false;
+                })
+            }
         }
+        
     },
 }
 
