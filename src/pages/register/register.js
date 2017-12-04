@@ -37,7 +37,7 @@ let register = {
         },
         //发送数据
         register() {
-            axios.post('/register', {
+            axios.post('/api/users/register', {
                 username: this.registerForm.username,
                 password: this.registerForm.password,
             })
