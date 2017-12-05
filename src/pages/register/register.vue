@@ -13,13 +13,13 @@
       <div class="register-body"  >
         <el-form :model="registerForm"  labelWidth="80px" ref="rulesForm" :rules="rules" label-position="left" class="form">
           <el-form-item label="用户名" prop="username">
-            <el-input v-model="registerForm.username" class="input" size="small" placeholder="请输入用户名" id="username" @blur="validateUname"></el-input>
+            <el-input v-model="registerForm.username" class="input" size="small" placeholder="请输入用户名" id="username"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input type="password" v-model="registerForm.password" class="input" size="small" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item label="确认密码" prop="repassword" id="repwd">
-            <el-input type="password" v-model="registerForm.repassword" class="input" size="small" placeholder="请输入密码" @blur="validatePwd"></el-input>
+            <el-input type="password" v-model="registerForm.repassword" class="input" size="small" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item class="form-btn">
             <el-button type="primary" class="reg-btn" @click="submitForm('rulesForm')">注册</el-button>

@@ -3,6 +3,30 @@ import axios from '../../../node_modules/axios/dist/axios'
 let register = {
     // 绑定数据
     data() {
+        //验证两次面是否相同
+        let validatePass = (rule, value, callback) => {      
+            if (value !== this.registerForm.password) {
+                callback(new Error('两次输入密码不一致!'));
+            } else {
+                callback();
+            }
+        };
+        //验证账号是否存在
+        let validateUname = (rule, value, callback) => {
+            axios.post('/api/users/uname', {
+                username: this.registerForm.username
+            }).then((res) => {
+                console.log(res.data.data.flag);
+                if (res.data.data.flag) {
+                    callback(new Error('用户已存在'));
+                }else{
+                    callback();
+                }
+            }).catch((err) => {
+                console.log(err);
+                return false;
+            })
+        }
         return {
             registerForm: {
                 username: '',
@@ -13,7 +37,8 @@ let register = {
                 username: [
                     { required: true, message: '请输入用户名', trigger: 'blur' },
                     { min: 6, max: 14, message: '长度在 6 到 14 个字符', trigger: 'blur' },
-                    { pattern: /^[a-zA-Z0-9_-]{6,14}$/, message: '请使用字母，数字，下划线', trigger: 'blur'}
+                    { pattern: /^[a-zA-Z0-9_-]{6,14}$/, message: '请使用字母，数字，下划线', trigger: 'blur'},
+                    { validator: validateUname, trigger: 'blur' }
                 ],
                 password: [
                     { required: true, message: '请输入密码', trigger: 'blur' },
@@ -23,7 +48,8 @@ let register = {
                 repassword: [
                     { required: true, message: '请再次输入密码', trigger: 'blur' },
                     { min: 6, max: 14, message: '长度在 6 到 14 个字符', trigger: 'blur' },
-                    { pattern: /^[a-zA-Z0-9_-]{6,14}$/, message: '请使用字母，数字，下划线', trigger: 'blur' }                    
+                    { pattern: /^[a-zA-Z0-9_-]{6,14}$/, message: '请使用字母，数字，下划线', trigger: 'blur' },
+                    { validator: validatePass, trigger: 'blur'}                
                 ]
             }
         };
@@ -54,59 +80,18 @@ let register = {
                     console.log(error);
                 });
         },
-        //验证登录规则
+        //提交数据
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
-                if (valid && this.validatePwd() && this.validateUname()) {
+                console.log('valid')
+                if (valid) {
                    this.register();
                 } else {
                     console.log('error submit!!');
                     return false;
                 }
             });
-        },
-       /**
-        * 验证两次密码是否相同
-        */
-        validatePwd(){
-            let repwd = document.getElementById('repwd');
-            let message = repwd.getElementsByClassName('el-form-item__content')[0];
-            let div = document.createElement('div');
-            if (this.registerForm.repassword.length >= 6 && this.registerForm.repassword.length <= 14) {
-                if (this.registerForm.password !== this.registerForm.repassword) {
-                    div.setAttribute('class', 'el-form-item__error');
-                    div.setAttribute('id', 'cunzai');
-                    div.innerHTML = '两次密码输入不一致'
-                    repwd.className += ' ' + 'is-error';
-                    message.appendChild(div);
-                    return false;
-                } else {
-                    if (repwd.getAttribute('class').indexOf('is-error') > -1 && document.getElementById('cunzai')) {
-                        let reg = new RegExp('(\\s|^)' + 'is-error' + '(\\s|$)');
-                        repwd.className = repwd.className.replace(reg, '');
-                        message.removeChild(document.getElementById('cunzai'));
-                    }
-                    return true;
-                }
-            }
-        },
-        /**
-         * 验证用户名重复
-         */
-        validateUname() {
-            if(this.registerForm.username.length >= 6 && this.registerForm.username.length <= 14){
-                axios.post('/api/users/uname',{
-                    username: this.registerForm.username
-                }).then((res)=>{
-                    console.log(res.data.data.flag);
-                    return res.data.flag;
-                }).catch((err)=>{
-                    console.log(err);
-                    return false;
-                })
-            }
         }
-        
     },
 }
 

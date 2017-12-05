@@ -32,16 +32,14 @@ router.post('/register',function (req,res) {
 })
 
 router.post('/uname', function (req,res) {
-  // console.log('uname');
   var unameInfo = {
     username: req.body.username
   }
-  // console.log(unameInfo);
   User.find(unameInfo,function (err,doc) {
     if(err) {
       console.log(err);
     }else{
-      console.log(doc.length);
+      console.log(doc);
      if(doc.length !== 0) {
        res.json({
          code: '200',
@@ -59,6 +57,45 @@ router.post('/uname', function (req,res) {
          message:'数据不存在'
        })
      }
+    }
+  });
+})
+
+router.post('/login',function (req,res) {
+  var userInfo = {
+    username: req.body.username,
+    password: 0
+  };
+  console.log(req.body);
+  User.find(userInfo,function (err,doc) {
+    if(err) {
+      console.log(err)
+    }else{
+      if(doc.length > 0){
+        console.log(doc[0].username)
+        res.cookie('user',{
+          username:doc[0].username,
+          password:doc[0].password
+        },{
+          maxAge: 600000,
+          httpOnly: true //有助于防范xxs攻击
+        })
+        res.json({
+          code:'200',
+          data:{
+            flag:'true'
+          },
+          message:'登陆成功'
+        });
+      }else{
+        res.json({
+          code: '200',
+          data: {
+            flag: 'falase'
+          },
+          message: '账号密码不正确'
+        });
+      }
     }
   });
 })

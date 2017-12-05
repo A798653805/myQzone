@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/HelloWorld'
 import Login from '../pages/login/login.vue'
 import Register from '../pages/register/register.vue'
-import neng from '../pages/neng.vue'
+import Home from '../pages/home/home.vue'
 
 Vue.use(Router);
 
@@ -20,9 +20,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/neng',
-      name: 'neng',
-      component: neng
+      path: '/home',
+      name: 'home',
+      component: Home
     }
   ]
 })
