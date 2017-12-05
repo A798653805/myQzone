@@ -1,12 +1,16 @@
 <template>
-    <div class="content">
-        主页
+    <div class="home">
+       <topheader></topheader> 
     </div>
 </template>
 
 <script>
+import Topheader from '../../components/topheader/topheader.vue'
+
 export default {
-  
+  components: {
+      Topheader,
+  }
 }
 </script>
 
