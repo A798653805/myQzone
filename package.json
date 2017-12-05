@@ -15,7 +15,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "*",
-    "element-ui": "^1.4.10",
+    "element-ui": "^2.0.7",
     "express": "~4.15.5",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
