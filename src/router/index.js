@@ -4,6 +4,7 @@ import Hello from '@/components/HelloWorld'
 import Login from '../pages/login/login.vue'
 import Register from '../pages/register/register.vue'
 import Home from '../pages/home/home.vue'
+import MyHome from '../pages/myHome/myHome.vue'
 
 Vue.use(Router);
 
@@ -22,7 +23,14 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      children:[
+        { 
+          path: '', 
+          name: 'MyHome',
+          component: MyHome 
+        }
+      ]
     }
   ]
 })
