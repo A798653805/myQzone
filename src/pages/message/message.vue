@@ -1,5 +1,5 @@
 <template>
   <div>
-      我是添加朋友页面
+      我是博客页面
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
   <div>
-      我是添加朋友页面
+      我是个人文档页面
   </div>
 </template>
