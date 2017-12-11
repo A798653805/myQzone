@@ -12,16 +12,17 @@
               <p>你是一个丑小鸭，咿呀咿呀哦~~</p>
           </div>
           <div class="btn">
-              <i></i>
+              <el-button type="text">点赞</el-button>
+              <el-button type="text">评论</el-button>
           </div>
       </div>
       <div class="dy-footer">
-          div.
       </div>
   </div>
 </template>
 
 <style lang="less">
+    @import url('../../../static/less/common.less');
     @import url('./less/dynamic.less');
 </style>
 
