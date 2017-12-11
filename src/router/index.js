@@ -62,11 +62,11 @@ export default new Router({
           name: 'mood',
           component: Mood
         },
-        {
-          path: 'myHome',
-          name: 'message',
-          component: MyHome
-        },
+        // {
+        //   path: 'myHome',
+        //   name: 'myHome',
+        //   component: MyHome
+        // },
         {
           path: 'personCenter',
           name: 'personCenter',

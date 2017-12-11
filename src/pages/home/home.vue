@@ -4,7 +4,7 @@
             <div class="content">
                 <h1>我的空间 的空间</h1>
                 <p>我的介绍</p>
-                <el-button type="text" class="exit-btn">退出登录</el-button>
+                <el-button type="text" class="exit-btn"><i class="iconfont icon-exit"></i>退出登录</el-button>
             </div>
         </div>
         <div class="nav">
@@ -28,9 +28,13 @@
                 </el-menu>
             </div>  
         </div>
-        <div class="body">
+        <div class="body-box">
             <div class="content">
-                <router-view />
+                <div class="wrap-box">
+                    <div class="wrap-container">
+                        <router-view />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
