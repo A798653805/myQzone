@@ -15,8 +15,16 @@
               <el-button type="text">点赞</el-button>
               <el-button type="text">评论</el-button>
           </div>
+          <div class="line"></div>
       </div>
-      <div class="dy-footer">
+      <div class="dy-footer ">
+          <div class="nice-list">
+              <p class="msg">1个人觉得很赞</p>
+          </div>
+          <div class="comment">
+              <el-input type="textarea" size="small" :rows="1" :autosize="false"></el-input>
+              <el-button class="btn">发表</el-button>
+          </div>
       </div>
   </div>
 </template>
