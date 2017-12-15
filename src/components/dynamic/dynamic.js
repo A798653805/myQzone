@@ -42,7 +42,8 @@ let dynamic = {
          * 点赞功能
          */
         touchNice() {
-            this.$emit('nice');
+            this.goodNum++;
+            this.$emit('touchNice',this.goodNum);
         }
     }
 }

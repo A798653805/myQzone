@@ -3,12 +3,12 @@ import dywindow from "../../components/dynamic/dynamic.vue";
 let myHome = {
     data(){
         return {
-            users:[
+            items:[
                 {
                     goods: 0,
                 },
                 {
-                    goods: 0
+                    goods: 5
                 }
             ]
         }
@@ -17,8 +17,8 @@ let myHome = {
         dywindow
     },
     methods: {
-        touchNice() {
-            this.goods++;
+        getNice(data) {
+            item.goods = data;
         }
     }
 }
