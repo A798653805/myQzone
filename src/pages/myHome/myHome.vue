@@ -25,7 +25,8 @@
             </div>
         </div>
         <div class="dynamic-box">
-            <dywindow></dywindow>
+            <dywindow  name="小少爷"  msg="不想弄" @nice="touchNice"></dywindow>
+            <dywindow  name="小少爷"  msg="不想弄" @nice="touchNice"></dywindow>
         </div>
          <div class="msgboard-box">
             留言板
