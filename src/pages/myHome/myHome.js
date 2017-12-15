@@ -17,9 +17,7 @@ let myHome = {
         dywindow
     },
     methods: {
-        getNice(data) {
-            item.goods = data;
-        }
+        
     }
 }
 

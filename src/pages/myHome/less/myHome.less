@@ -1,56 +1,98 @@
 .myhome-box {
-   overflow: hidden;
-    .overview-box {
-        position: relative;
-        display: inline-block;
-        width: 250px;
-        height: 100px;
-        background: #ffffff;
-        border-radius: 3px;
-        box-shadow: 0 0 3px 0 #ffffff;
-        .overview {
-            position: absolute;
-            top: 50%;
-            margin-top: -34px;
-            overflow: hidden;
-            padding: 0 10px;
-           li{
-               padding: 10px 0 10px 0;
-               width: 76px;
-               float: left;
-               text-align: center;
-               border-right: 1px solid #666666;  
-               a{
-                   &:hover {
-                       text-decoration: underline
-                   }
-                    color: #2D2F33;   
-                    span {
-                        font-size: 26px;
-                        padding-bottom: 4px;
-                    }
-                    p{
-                        padding-top: 7px;
-                        font-size: 15px;
-                    }                 
-                }
-                &:last-child {
-                    border: none;
-                }
-           }
-        }
-    }
-    .msgboard-box {
+  overflow: hidden;
+  .overview-box {
+    position: relative;
+    display: inline-block;
+    width: 260px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 0 #ffffff;
+    .overview {
+      position: absolute;
+      top: 50%;
+      margin-top: -34px;
+      overflow: hidden;
+      padding: 0 10px;
+      li {
+        padding: 10px 0 10px 0;
+        width: 76px;
         float: left;
-        margin-top: 14px;
-        width: 250px;
+        text-align: center;
+        border-right: 1px solid #666666;
+        a {
+          &:hover {
+            text-decoration: underline
+          }
+          color: #2D2F33;
+          span {
+            font-size: 26px;
+            padding-bottom: 4px;
+          }
+          p {
+            padding-top: 7px;
+            font-size: 15px;
+          }
+        }
+        &:last-child {
+          border: none;
+        }
+      }
     }
-    .dynamic-box {
-      float: right;
-       right: 0;
-       top: 0;
-       width: 700px;
-    //    background: #ffffff;
-       height: 800px;   
+  }
+  .msgboard-box {
+    padding: 10px;
+    float: left;
+    margin-top: 14px;
+    width: 240px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 #ffffff;
+    .title {
+      padding-bottom: 20px;
+      font-weight: 700;
     }
+    .text-box {
+      overflow: hidden;
+      .sub-msg {
+        margin-top: 8px;
+        float: right;
+      }
+      textarea {
+        resize: none;
+      }
+    }
+    .msg-item {
+      overflow: hidden;
+      border-bottom: #606266 solid 1px;
+      padding: 5px;
+      vertical-align: top;
+      .msg{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        max-height: 68px;
+        line-height: 16px;
+        font-size: 10px;
+        .name {
+          color: #409EFF;
+        }
+        p {
+          display: inline;
+        }
+      }
+      .date {
+        font-size: 10px;
+        color: #909399;
+      }
+    }
+  }
+  .dynamic-box {
+    float: right;
+    right: 0;
+    top: 0;
+    width: 700px; 
+    height: 800px;
+  }
 }

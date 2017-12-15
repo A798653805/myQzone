@@ -1,86 +1,89 @@
 .dy-window {
-    margin-bottom: 10px;
-    background: #ffffff;
-    border-radius: 3px;
-    padding: 10px;
-    .dy-header {
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 0 3px 0 #ffffff;
+  .dy-header {
+    overflow: hidden;
+    .title-box {
+      position: relative;
+      .name {
+        font-size: 28px;
+        color: #2D2F33
+      }
+      .data {
+        padding-top: 8px;
+        color: #5A5E66;
+        font-size: 10px;
+      }
+      .del {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  .dy-body {
+    margin-top: 20px;
+    .message {
+      padding: 15px 5px;
+      font-size: 17px;
+    }
+    .line {
+      width: 100%;
+      border-top: 1px solid #D8DCE5;
+    }
+  }
+  .dy-footer {
+    .nice-list {
+      margin-top: 8px;
+      .msg {
+        font-size: 14px;
+      }
+    }
+    .comment-box {
+      overflow: hidden;
+      .comments {
+        position: relative;
+        margin-top: 10px;
+        vertical-align: top;
         overflow: hidden;
-        .title-box {
-            position: relative;
-            .name {
-                font-size: 28px;
-                color: #2D2F33
-            }
-            .data {
-                padding-top: 8px;
-                color: #5A5E66;
-                font-size: 10px;
-            }
-            .del {
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
+        .comments-left,
+        .comments-rig {
+          float: left;
         }
+        .comments-left {
+          .name {
+            padding-bottom: 5px;
+            font-size: 14px;
+            color: #409EFF;
+          }
+          .date {
+            text-align: center;
+            font-size: 13px;
+            color: #5A5E66;
+          }
+        }
+        .comments-rig {
+          width: 620px;
+          padding-left: 5px;
+          font-size: 14px;
+          max-height: 60px;
+          line-height: 16px;
+        }
+        .reply-btn {
+          padding: 5px;
+        }
+      }
+      textarea {
+        margin-top: 5px;
+        resize: none;
+      }
+      .btn {
+        margin-top: 10px;
+        float: right;
+      }
     }
-    .dy-body {
-        margin-top: 20px;
-        .message {
-            padding: 15px 5px;
-            font-size: 17px;
-        }
-        .line {
-            width: 100%;
-            border-top: 1px solid #D8DCE5;
-         }
-    }
-    .dy-footer {
-        .nice-list {
-            margin-top: 8px;
-            .msg{
-                font-size:14px;
-            }
-        }
-        .comment-box {
-            overflow: hidden;
-            .comments {
-                position: relative;
-                margin-top: 10px;
-                vertical-align: top;
-                overflow: hidden;
-                .comments-left,.comments-rig {
-                    float: left;
-                }
-                .comments-left {
-                    .name {
-                        padding-bottom: 5px;
-                        font-size:14px;
-                        color: #409EFF;
-                    }
-                    .date {
-                        text-align: center;
-                        font-size: 13px;
-                        color: #5A5E66;
-                    }
-                }
-                .comments-rig {
-                    width: 620px;
-                    padding-left: 5px;
-                    font-size: 14px;
-                    max-height: 40px;
-                }
-                .reply-btn {
-                    padding: 5px;
-                }
-            }
-            textarea {
-                margin-top: 5px;
-                resize: none; 
-            }
-            .btn {
-                margin-top: 10px;
-                float: right;
-            }
-        }
-    }
+  }
 }

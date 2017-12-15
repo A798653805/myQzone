@@ -18,6 +18,7 @@ let dynamic = {
             rows: 1,
             subFlage: false,
             replyFlage: false,
+            niceNum: this.goodNum
         }
     },
     methods: {
@@ -42,8 +43,7 @@ let dynamic = {
          * 点赞功能
          */
         touchNice() {
-            this.goodNum++;
-            this.$emit('touchNice',this.goodNum);
+            this.niceNum++;
         }
     }
 }
