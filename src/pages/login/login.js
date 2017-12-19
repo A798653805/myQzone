@@ -1,4 +1,4 @@
-import axios from '../../../node_modules/axios/dist/axios'
+
 
 let login = {
   data() {
@@ -71,7 +71,6 @@ let login = {
      */
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
-        console.log('ss');
         if (valid) {
           this.login();
         } else {
@@ -84,12 +83,11 @@ let login = {
      * 向后台发送数据
      */
     login() {
-      axios.post('/api/users/login', {
+      this.axios.post('/api/users/login', {
         username: this.loginForm.username,
         password: this.loginForm.password
       }).then((res) => {
-        console.log(res.data.data.flag);
-        if (res.data.data.flag) {
+        if (res.flag) {
           console.log('ss');
           // this.$router.push({ path: '/home' })
           // this.$router.go(0);
