@@ -14,10 +14,18 @@ import PersonCenter from '../pages/personCenter/personCenter.vue' //个人中心
 import PersonFiles from '../pages/personFiles/personFiles.vue'  //个人档案
 import Photo from '../pages/photo/photo.vue' //相册
 
+import Neng from '../pages/neng.vue'
+
+
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'neng',
+      component: Neng
+    },
     {
       path: '/login',
       name: 'Login',
@@ -33,10 +41,10 @@ export default new Router({
       name: 'home',
       component: Home,
       children:[
-        { 
-          path: '', 
+        {
+          path: '',
           name: 'MyHome',
-          component: MyHome 
+          component: MyHome
         }, {
           path: 'addFriend',
           name: 'addFriend',
@@ -62,11 +70,6 @@ export default new Router({
           name: 'mood',
           component: Mood
         },
-        // {
-        //   path: 'myHome',
-        //   name: 'myHome',
-        //   component: MyHome
-        // },
         {
           path: 'personCenter',
           name: 'personCenter',
