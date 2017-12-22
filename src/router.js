@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '../router/login/login.vue'
-import Register from '../pages/register/register.vue'
-import Home from '../pages/home/home.vue'
+import Login from './router/login/login.vue'
+import Register from './router/register/register.vue'
+import Home from './router/home/home.vue'
 
-import AddFriend from '../pages/addFriend/addFriend.vue' //添加朋友
-import FriendList from '../pages/friendList/friendList.vue' //好友列表
-import Message from '../pages/message/message.vue' //博客
-import MessageBoard from '../pages/messageBoard/messageBoard.vue'  //浏览板
-import Mood from '../pages/mood/mood.vue'
-import MyHome from '../pages/myHome/myHome.vue' //我的主页
-import PersonCenter from '../pages/personCenter/personCenter.vue' //个人中心
-import PersonFiles from '../pages/personFiles/personFiles.vue'  //个人档案
-import Photo from '../pages/photo/photo.vue' //相册
+import AddFriend from './router/addFriend/addFriend.vue' //添加朋友
+import FriendList from './router/friendList/friendList.vue' //好友列表
+import Message from './router/message/message.vue' //博客
+import MessageBoard from './router/messageBoard/messageBoard.vue'  //浏览板
+import Mood from './router/mood/mood.vue'
+import MyHome from './router/myHome/myHome.vue' //我的主页
+import PersonCenter from './router/personCenter/personCenter.vue' //个人中心
+import PersonFiles from './router/personFiles/personFiles.vue'  //个人档案
+import Photo from './router/photo/photo.vue' //相册
 
-import Neng from '../pages/neng.vue'
+import Neng from './router/neng.vue'
 
 
 Vue.use(Router);

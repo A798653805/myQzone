@@ -1,18 +1,17 @@
 <template>
   <div class="content">
     <div class="header">
-      <h1>
-        <i class="iconfont icon-qzone"></i>个人空间</h1>
+      <h1><i class="iconfont icon-qzone"></i>个人空间</h1>
     </div>
-    <div class="register-box">
+    <div  class="register-box">
       <div class="register-header">
         <div class="remind">
           <h2>注册</h2>
         </div>
       </div>
       <div class="under-line"></div>
-      <div class="register-body">
-        <el-form :model="registerForm" labelWidth="80px" ref="rulesForm" :rules="rules" label-position="left" class="form">
+      <div class="register-body"  >
+        <el-form :model="registerForm"  labelWidth="80px" ref="rulesForm" :rules="rules" label-position="left" class="form">
           <el-form-item label="用户名" prop="username">
             <el-input v-model="registerForm.username" class="input" size="small" placeholder="请输入用户名" id="username"></el-input>
           </el-form-item>
@@ -36,13 +35,9 @@
 
 <style lang="less">
   @import url("./less/register");
-
 </style>
 
 <script>
-  import {
-    register
-  } from './register';
+  import {register} from './register';
   export default register;
-
 </script>
