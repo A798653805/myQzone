@@ -5,7 +5,7 @@
 </template>
 
 <style lang="less">
-  @import url("./less/login");
+
 
 </style>
 
