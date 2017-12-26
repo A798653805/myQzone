@@ -1,9 +1,10 @@
-
-import RegisterInput from '../../pages/registerInput/registerInput.vue'
+import LoginWrap from '../../pages/login/loginWrap/loginWrap.vue'
+import RegisterInput from '../../pages/login/registerInput/registerInput.vue'
 
 let register = {
   components: {
-    RegisterInput
+    RegisterInput,
+    LoginWrap
   }
 }
 

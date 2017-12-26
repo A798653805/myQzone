@@ -1,8 +1,10 @@
-import LoginInput from '../../pages/loginInput/loginInput.vue'
+import LoginInput from '../../pages/login/loginInput/loginInput.vue'
+import LoginWrap from '../../pages/login/loginWrap/loginWrap.vue'
 
 let login = {
   components: {
-    LoginInput
+    LoginInput,
+    LoginWrap
   }
 }
 
