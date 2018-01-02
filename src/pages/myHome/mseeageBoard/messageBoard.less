@@ -1,0 +1,48 @@
+.msgboard-box {
+    padding: 10px;
+    float: left;
+    margin-top: 14px;
+    width: 240px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 #ffffff;
+    .title {
+      padding-bottom: 20px;
+      font-weight: 700;
+    }
+    .text-box {
+      overflow: hidden;
+      .sub-msg {
+        margin-top: 8px;
+        float: right;
+      }
+      textarea {
+        resize: none;
+      }
+    }
+    .msg-item {
+      overflow: hidden;
+      border-bottom: #606266 solid 1px;
+      padding: 5px;
+      vertical-align: top;
+      .msg{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        max-height: 68px;
+        line-height: 16px;
+        font-size: 10px;
+        .name {
+          color: #409EFF;
+        }
+        p {
+          display: inline;
+        }
+      }
+      .date {
+        font-size: 10px;
+        color: #909399;
+      }
+    }
+  }

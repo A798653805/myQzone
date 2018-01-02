@@ -1,0 +1,40 @@
+.overview-box {
+    position: relative;
+    display: inline-block;
+    width: 260px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 0 #ffffff;
+    .overview {
+      position: absolute;
+      top: 50%;
+      margin-top: -34px;
+      overflow: hidden;
+      padding: 0 10px;
+      li {
+        padding: 10px 0 10px 0;
+        width: 76px;
+        float: left;
+        text-align: center;
+        border-right: 1px solid #666666;
+        a {
+          &:hover {
+            text-decoration: underline
+          }
+          color: #2D2F33;
+          span {
+            font-size: 26px;
+            padding-bottom: 4px;
+          }
+          p {
+            padding-top: 7px;
+            font-size: 15px;
+          }
+        }
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  }

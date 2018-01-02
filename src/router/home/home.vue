@@ -9,9 +9,14 @@
 </template>
 
 <script>
-  export {default} from './home.js'
+  export {
+    default
+  }
+  from './home.js'
+
 </script>
 
 <style lang="less">
   @import url('./less/home.less');
+
 </style>
