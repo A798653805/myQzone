@@ -1,51 +1,43 @@
+import Comment from '../comment/comment.vue'
 
 let dynamic = {
-    props: {
-        msg:{
-            type:String
-        },
-        name: {
-            type:String
-        },
-        goodNum: {
-            type:Number,
-            default: 0,
-        }
-
+  props: {
+    msg: {
+      type: String
     },
-    data () {
-        return {
-            rows: 1,
-            subFlage: false,
-            replyFlage: false,
-            niceNum: this.goodNum
-        }
+    name: {
+      type: String
     },
-    methods: {
-        /**
-         * 评论框获取焦点时，改变显示状态
-         */
-        showStatus() {
-            this.rows = 3;
-            this.subFlage = true;
-        },
-        /**
-         * 回复时输入框状态
-         */
-        replyStatus() {
-            if(this.replyFlage) {
-                this.rows = 1;
-                this.replyFlage = false;
-                this.subFlage = false;
-            }
-        },
-        /**
-         * 点赞功能
-         */
-        touchNice() {
-            this.niceNum++;
-        }
+    goodNum: {
+      type: Number,
+      default: 0,
     }
+  },
+  components: {
+    Comment
+  },
+  data() {
+    return {
+      niceNum: this.goodNum,
+      autosizeFlag: false
+    }
+  },
+  methods: {
+
+    /**
+     * 点赞功能
+     */
+    touchNice() {
+      this.niceNum++;
+    },
+    /**
+     *
+     */
+    autoFocus(){
+      console.log(this.$refs.comment);
+      this.$refs.comment.getFouse()
+    }
+  }
 }
 
-export { dynamic }
+export {dynamic}

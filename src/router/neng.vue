@@ -3,12 +3,14 @@
     <el-input v-model="data"></el-input>
     <el-button @click="seleted">哈哈哈</el-button>
     <emoji v-if="show" @selected="selectEmoji"></emoji>
-    <p v-html="emoji(data)"></p>
+    <p v-html="emoji(data,16)"></p>
   </div>
 </template>
 
 <style lang="less">
-
+  p{
+    vertical-align: middle;
+  }
 </style>
 
 <script>
