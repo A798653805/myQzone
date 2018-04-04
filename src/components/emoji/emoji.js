@@ -6,16 +6,16 @@ Object.values(data).forEach(item => {
 })
 
 
-export function emoji(value,fontsize) {
+export function emoji(value) {
     if (!value) return
     Object.keys(emojiData).forEach(item => {
-        value = value.replace(new RegExp(item, 'g'), createIcon(item,fontsize))
+        value = value.replace(new RegExp(item, 'g'), createIcon(item))
     })
     return value
 }
 
-function createIcon(item,fontsize) {
+function createIcon(item) {
     const value = emojiData[item]
     const path = './static/emoji/'
-    return `<img src=${path}${value}  width="${fontsize}px" height="${fontsize}px" style="vertical-align: top">`
+    return `<img src=${path}${value} width="16px" height="16px">`
 }

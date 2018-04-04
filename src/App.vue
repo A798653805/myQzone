@@ -10,6 +10,5 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import url('./../static/less/common.less');
+<style>
 </style>

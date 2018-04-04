@@ -1,8 +1,0 @@
-<template>
-  <person-center></person-center> 
-</template>
-
-<script>
-export {default} from './personCenter.js'
-</script>
-

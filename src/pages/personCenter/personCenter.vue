@@ -1,9 +1,5 @@
 <template>
-  <div class="personCenter-box">
-    s
+  <div>
+      我是个人中心页面
   </div>
 </template>
-
-<script>
-export {default} from './personCenter.js'
-</script>

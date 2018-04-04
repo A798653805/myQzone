@@ -26,7 +26,62 @@
           </div>
           <div class="date">10月10日</div>
         </li>
-        
+        <li class="blog-item">
+          <div class="name">你是大傻子</div>
+          <div class="date">10月10日</div>
+          <div class="menu"></div>
+        </li>
+        <li class="blog-item">
+          <div class="name">你是大傻子</div>
+          <div class="date">10月10日</div>
+        </li>
+        <li class="blog-item">
+          <div class="name">你是大傻子</div>
+          <div class="date">10月10日</div>
+        </li>
+        <li class="blog-item">
+          <div class="name">你是大傻子</div>
+          <div class="date">10月10日</div>
+        </li>
+        <li class="blog-item">
+          <div class="name">你是大傻子</div>
+          <div class="date">10月10日</div>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
+          <li class="blog-item">
+            <div class="name">你是大傻子</div>
+            <div class="date">10月10日</div>
+          </li>
       </ul>
     </div>
     <div class="block">
@@ -36,16 +91,15 @@
   </div>
 </template>
 
-
 <style lang="less">
-  @import url('./message.less');
+  @import url('./less/message.less');
 
 </style>
 
 <script>
-  export {
-    default
-  }
-  from './message.js'
+  import {
+    blog
+  } from './message'
+  export default blog;
 
 </script>
