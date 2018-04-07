@@ -23,6 +23,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/home'
+    },
+    {
+      path: '/neng',
       name: 'neng',
       component: Neng
     },

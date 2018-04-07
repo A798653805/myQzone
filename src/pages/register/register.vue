@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="header">
-      <h1><i class="iconfont icon-qzone"></i>个人空间</h1>
+      <h1><i class="iconfont icon-kongjian"></i>个人空间</h1>
     </div>
     <div  class="register-box">
       <div class="register-header">

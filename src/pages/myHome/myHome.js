@@ -1,4 +1,6 @@
-import dywindow from "../../components/dynamic/dynamic.vue";
+import Dywindow from "../../components/dynamic/dynamic.vue";
+import Overview from '../../components/overview/overview.vue';
+import MsgBoard from "../../components/msgboard_s/msgboard_s.vue";
 
 let myHome = {
     data(){
@@ -14,7 +16,9 @@ let myHome = {
         }
     },
     components: {
-        dywindow
+        Dywindow,
+        Overview,
+        MsgBoard
     },
     methods: {
         

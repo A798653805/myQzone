@@ -5,7 +5,8 @@
         <h1>我的空间 的空间</h1>
         <p>我的介绍</p>
         <el-button type="text" class="exit-btn">
-          <i class="iconfont icon-exit"></i>退出登录</el-button>
+          <i class="iconfont icon-exit"></i>退出登录
+        </el-button>
       </div>
     </div>
     <div class="nav">
