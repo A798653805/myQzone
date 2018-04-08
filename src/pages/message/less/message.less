@@ -1,50 +1,48 @@
 .blog-box {
-    position: relative;
-    height: 481px;
-    padding: 10px;
-    background: #fff;
-    border-radius: 3px;
-    .title-box {
-        padding-bottom: 4px;
-        border-bottom: 1px solid #606266;
-        .title {
-            font-size: 22px;
+  position: relative;
+  height: 480px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 3px;
+  .title-box {
+    padding-bottom: 4px;
+    border-bottom: 1px solid #606266;
+    .title {
+      font-size: 22px;
+    }
+  }
+  .search-box {
+    padding: 4px 0;
+    overflow: hidden;
+    .search {
+      float: right;
+      width: 200px;
+    }
+  }
+  .blog-list {
+    .blog-item {
+      padding: 5px 0;
+      overflow: hidden;
+      .name {
+        display: inline-block;
+        font-size: 14px
+      }
+      .date {
+        float: right;
+        color: #909399;
+        font-size: 14px;
+        padding-right: 4px;
+      }
+      .operation {
+        float: right;
+        span {
+          cursor: pointer;
+          color: #409EFF;
         }
+      }
     }
-    .search-box {
-        padding: 4px 0;
-        overflow: hidden;
-        .search {
-            float: right;
-            width: 200px;
-        }
-    }
-    .blog-list {
-        .blog-item {
-           padding: 5px 0;
-           overflow: hidden;
-           .name {
-               display: inline-block;
-               font-size: 14px
-           }
-           .date {
-               float: right;
-               color: #909399;
-               font-size: 14px;
-               padding-right: 4px; 
-           }
-           .operation {
-               float: right; 
-               span{
-                   cursor: pointer;
-                    color: #409EFF;
-               }
-           }
-        }
-    }
-    .block{
-        position: absolute;
-        left: 50%;
-        margin-left: -124px;
-    }
+  }
+  .block {
+   text-align: center;
+  }
 }

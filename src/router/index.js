@@ -90,6 +90,50 @@ export default new Router({
           component: Photo
         },
       ]
-    }
+    },
+    // {
+    //   path: '',
+    //   name: 'MyHome',
+    //   component: MyHome
+    // }, {
+    //   path: '/addFriend',
+    //   name: 'addFriend',
+    //   component: AddFriend
+    // },
+    // {
+    //   path: '/friendList',
+    //   name: 'friendList',
+    //   component: FriendList
+    // },
+    // {
+    //   path: '/message',
+    //   name: 'message',
+    //   component: Message
+    // },
+    // {
+    //   path: '/messageBoard',
+    //   name: 'messageBoard',
+    //   component: MessageBoard
+    // },
+    // {
+    //   path: '/mood',
+    //   name: 'mood',
+    //   component: Mood
+    // },
+    // {
+    //   path: '/personCenter',
+    //   name: 'personCenter',
+    //   component: PersonCenter
+    // },
+    // {
+    //   path: '/personFiles',
+    //   name: 'personFiles',
+    //   component: PersonFiles
+    // },
+    // {
+    //   path: '/photo',
+    //   name: 'photo',
+    //   component: Photo
+    // },
   ]
 })
