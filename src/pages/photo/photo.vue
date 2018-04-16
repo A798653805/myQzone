@@ -5,13 +5,10 @@
     </div>
     <div class="creat-photoList">
       <el-button @click="dialogFormVisible=true" class="creat-photoList-btn">新建相册</el-button>
-      <el-dialog title="新建相册" 
-                :visible.sync="dialogFormVisible"
-                :center="true"
-                >
+      <el-dialog title="新建相册" :visible.sync="dialogFormVisible" :center="true">
         <el-form :model="form">
-          <el-form-item label="相册名称" >
-            <el-input v-model="form.name" ></el-input>
+          <el-form-item label="相册名称">
+            <el-input v-model="form.name"></el-input>
           </el-form-item>
           <el-form-item label="上传图片">
             <span>我上传不分</span>
@@ -84,7 +81,7 @@
     data() {
       return {
         dialogFormVisible: false,
-        form:{
+        form: {
           name: ''
         }
       }

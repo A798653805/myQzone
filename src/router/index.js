@@ -13,6 +13,8 @@ import MyHome from '../pages/myHome/myHome.vue' //我的主页
 import PersonCenter from '../pages/personCenter/personCenter.vue' //个人中心
 import PersonFiles from '../pages/personFiles/personFiles.vue'  //个人档案
 import Photo from '../pages/photo/photo.vue' //相册
+import PhotoList from '../pages/photoList/photoList.vue' //相册
+
 
 import Neng from '../pages/neng.vue'
 
@@ -89,51 +91,12 @@ export default new Router({
           name: 'photo',
           component: Photo
         },
+        {
+          path: 'photoList',
+          name: 'photoList',
+          component: PhotoList
+        },
       ]
-    },
-    // {
-    //   path: '',
-    //   name: 'MyHome',
-    //   component: MyHome
-    // }, {
-    //   path: '/addFriend',
-    //   name: 'addFriend',
-    //   component: AddFriend
-    // },
-    // {
-    //   path: '/friendList',
-    //   name: 'friendList',
-    //   component: FriendList
-    // },
-    // {
-    //   path: '/message',
-    //   name: 'message',
-    //   component: Message
-    // },
-    // {
-    //   path: '/messageBoard',
-    //   name: 'messageBoard',
-    //   component: MessageBoard
-    // },
-    // {
-    //   path: '/mood',
-    //   name: 'mood',
-    //   component: Mood
-    // },
-    // {
-    //   path: '/personCenter',
-    //   name: 'personCenter',
-    //   component: PersonCenter
-    // },
-    // {
-    //   path: '/personFiles',
-    //   name: 'personFiles',
-    //   component: PersonFiles
-    // },
-    // {
-    //   path: '/photo',
-    //   name: 'photo',
-    //   component: Photo
-    // },
+    }
   ]
 })

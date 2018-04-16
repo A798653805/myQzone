@@ -1,5 +1,8 @@
 <template>
-  <div>
-      我是留言板
+  <div class="msgboard-box">
+      <div class="title">
+        留言板
+      </div>
+      
   </div>
 </template>
