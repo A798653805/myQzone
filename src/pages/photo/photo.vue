@@ -4,7 +4,7 @@
       相册
     </div>
     <div class="creat-photoList">
-      <el-button @click="dialogFormVisible=true" class="creat-photoList-btn">新建相册</el-button>
+      <el-button type="primary" @click="dialogFormVisible=true" class="creat-photoList-btn">新建相册</el-button>
       <el-dialog title="新建相册" :visible.sync="dialogFormVisible" :center="true">
         <el-form :model="form">
           <el-form-item label="相册名称">
