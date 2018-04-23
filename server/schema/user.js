@@ -9,6 +9,14 @@ let user = new Schema({
     password: {
       type: String,
       require: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    userIntroduce: {
+        type: String,
+        required: true
     }
 });
 
