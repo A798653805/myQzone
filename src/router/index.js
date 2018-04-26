@@ -1,12 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {
+  // Loading,
+  Message
+} from 'element-ui'
+import Cookie from "js-cookie";
+
 import Login from '../pages/login/login.vue'
 import Register from '../pages/register/register.vue'
 import Home from '../pages/home/home.vue'
 
 import AddFriend from '../pages/addFriend/addFriend.vue' //添加朋友
 import FriendList from '../pages/friendList/friendList.vue' //好友列表
-import Message from '../pages/message/message.vue' //博客
+import Blog from '../pages/message/message.vue' //博客
 import MessageBoard from '../pages/messageBoard/messageBoard.vue'  //浏览板
 import Mood from '../pages/mood/mood.vue'
 import MyHome from '../pages/myHome/myHome.vue' //我的主页
@@ -21,7 +27,7 @@ import Neng from '../pages/neng.vue'
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -46,7 +52,7 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home,
-      children:[
+      children: [
         {
           path: '',
           name: 'MyHome',
@@ -61,10 +67,10 @@ export default new Router({
           name: 'friendList',
           component: FriendList
         },
-         {
+        {
           path: 'message',
           name: 'message',
-          component: Message
+          component: Blog
         },
         {
           path: 'messageBoard',
@@ -100,3 +106,22 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to,from,next)=>{
+  var userInfo = sessionStorage.getItem('token');//获取浏览器缓存的用户信息
+  if (userInfo) {//如果有就直接到首页咯
+    next();
+  } else {
+    if (to.path == '/login' || to.path == '/register') {//如果是登录页面路径，就直接next()
+      next();
+    } else {//不然就跳转到登录；
+      next('/login');
+      Message.error({
+        message: '请先登录'
+      });
+    }
+
+  }
+})
+
+export default router

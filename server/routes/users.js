@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var jwt = require('jsonwebtoken');
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,10 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/register',function (req,res) {
-  var pwd = req.body.password;
   var userInfo = {
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    nickname: req.body.nickname,
+    introduction: req.body.introduction
   }
   var monInsert = new User(userInfo);
   monInsert.save(function (err) {
@@ -64,26 +68,26 @@ router.post('/uname', function (req,res) {
 router.post('/login',function (req,res) {
   var userInfo = {
     username: req.body.username,
-    password: 0
+    password: req.body.password
   };
-  console.log(req.body);
+  console.log(req.session);
   User.find(userInfo,function (err,doc) {
     if(err) {
       console.log(err)
     }else{
       if(doc.length > 0){
-        console.log(doc[0].username)
-        res.cookie('user',{
-          username:doc[0].username,
-          password:doc[0].password
-        },{
-          maxAge: 600000,
-          httpOnly: true //有助于防范xxs攻击
-        })
+        var token = jwt.sign(userInfo, "LISHAOSHIYIGEHAOBAOBAO")
+        req.session.token = token;
+        console.log(req.session);
+        // res.cookie('token', token,{
+        //   maxAge: 600000,
+        //   // httpOnly: true //有助于防范xxs攻击
+        // })
         res.json({
           code:'200',
           data:{
-            flag:'true'
+            flag:'true',
+            token: token
           },
           message:'登陆成功'
         });

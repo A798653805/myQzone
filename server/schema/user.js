@@ -10,11 +10,11 @@ let user = new Schema({
       type: String,
       require: true
     },
-    name: {
+    nickname: {
         type: String,
         required: true
     },
-    userIntroduce: {
+    introduction: {
         type: String,
         required: true
     }

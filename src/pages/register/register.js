@@ -29,7 +29,9 @@ let register = {
       registerForm: {
         username: '',
         password: '',
-        repassword: ''
+        repassword: '',
+        nickname: '',
+        introduction: ''
       },
       rules: {
         username: [{
@@ -90,7 +92,17 @@ let register = {
             validator: validatePass,
             trigger: 'blur'
           }
-        ]
+        ],
+        nickname: [{
+          required: true,
+          message: '请输入昵称',
+          trigger: 'blur'
+        }],
+        introduction: [{
+          required: true,
+          message: '请输入个人简介',
+          trigger: 'blur'
+        }]
       }
     };
   },
@@ -106,6 +118,8 @@ let register = {
       this.axios.post('/api/users/register', {
           username: this.registerForm.username,
           password: this.registerForm.password,
+          nickname: this.registerForm.nickname,
+          introduction: this.registerForm.introduction
         })
         .then((response) => {
           this.$message({

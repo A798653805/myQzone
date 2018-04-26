@@ -1,4 +1,4 @@
-
+import Cookie from "js-cookie";
 
 let login = {
   data() {
@@ -89,9 +89,8 @@ let login = {
         password: this.loginForm.password
       }).then((res) => {
         if (res.flag) {
-          console.log('ss');
-          // this.$router.push({ path: '/home' })
-          // this.$router.go(0);
+          sessionStorage.setItem('token', res.token)
+          window.location.href = 'http://localhost:8080/#/home';
         } else {
           this.$message({
             message: '用户名或密码错误，请重新输入',
