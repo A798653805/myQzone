@@ -76,7 +76,9 @@ router.post('/login',function (req,res) {
       console.log(err)
     }else{
       if(doc.length > 0){
-        var token = jwt.sign(userInfo, "LISHAOSHIYIGEHAOBAOBAO")
+        var token = jwt.sign(userInfo, "LISHAOSHIYIGEHAOBAOBAO",{
+                    expiresIn: 60*60*24  // 24小时过期
+                })
         req.session.token = token;
         console.log(req.session);
         // res.cookie('token', token,{
