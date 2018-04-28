@@ -1,3 +1,5 @@
+import MD5 from 'js-md5';
+
 let register = {
   // 绑定数据
   data() {
@@ -14,7 +16,6 @@ let register = {
       this.axios.post('/api/users/uname', {
         username: this.registerForm.username
       }).then((res) => {
-    
         if (res.flag) {
           callback(new Error('用户已存在'));
         } else {
@@ -117,7 +118,7 @@ let register = {
     register() {
       this.axios.post('/api/users/register', {
           username: this.registerForm.username,
-          password: this.registerForm.password,
+          password: MD5(MD5(this.registerForm.password)),
           nickname: this.registerForm.nickname,
           introduction: this.registerForm.introduction
         })

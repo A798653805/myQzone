@@ -1,4 +1,5 @@
 import Cookie from "js-cookie";
+import MD5 from "js-md5";
 
 let login = {
   data() {
@@ -86,7 +87,7 @@ let login = {
       
       this.axios.post('/api/users/login', {
         username: this.loginForm.username,
-        password: this.loginForm.password
+        password: MD5(this.loginForm.password)
       }).then((res) => {
         if (res.flag) {
           sessionStorage.setItem('token', res.token)

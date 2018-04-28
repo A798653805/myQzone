@@ -88,7 +88,7 @@ router.post('/login',function (req,res) {
         res.json({
           code:'200',
           data:{
-            flag:'true',
+            flag:true,
             token: token
           },
           message:'登陆成功'
@@ -97,7 +97,7 @@ router.post('/login',function (req,res) {
         res.json({
           code: '200',
           data: {
-            flag: 'falase'
+            flag: false
           },
           message: '账号密码不正确'
         });
