@@ -70,23 +70,23 @@ router.post('/login',function (req,res) {
     username: req.body.username,
     password: req.body.password
   };
-  console.log(req.session);
-  User.find(userInfo,function (err,doc) {
+  console.log(userInfo);
+  User.findOne(userInfo,function (err,doc) {
     if(err) {
       console.log(err)
     }else{
-      if(doc.length > 0){
+      console.log(doc)
+      if(doc){
         var token = jwt.sign(userInfo, "LISHAOSHIYIGEHAOBAOBAO",{
-                    expiresIn: 60*60*24  // 24小时过期
+                    expiresIn: 60*60  // 24小时过期
                 })
-        req.session.token = token;
         console.log(req.session);
-        // res.cookie('token', token,{
-        //   maxAge: 600000,
-        //   // httpOnly: true //有助于防范xxs攻击
-        // })
+        res.cookie('token', token,{
+          maxAge: 600000,
+          httpOnly: true //有助于防范xxs攻击
+        })
         res.json({
-          code:'200',
+          code: 200,
           data:{
             flag:true,
             token: token
@@ -95,7 +95,7 @@ router.post('/login',function (req,res) {
         });
       }else{
         res.json({
-          code: '200',
+          code: 200,
           data: {
             flag: false
           },
@@ -104,6 +104,33 @@ router.post('/login',function (req,res) {
       }
     }
   });
+})
+
+router.post('/getname',function (req,res) {
+  jwt.verify(req.cookies.token, "LISHAOSHIYIGEHAOBAOBAO", function (err, decode) {
+    if(err){
+      console.log(err)
+    }else{
+      var userInfo = {
+        username: decode.username,
+        password: decode.password
+      }
+      User.findOne(userInfo,function(er,doc){
+        if(er){
+          console.log(er);
+        }else{
+          res.json({
+            code: 200,
+            data: {
+              nickname: doc.nickname,
+              introduction: doc.introduction
+            }
+          })
+        }
+      })
+    }
+  })
+
 })
 
 module.exports = router;

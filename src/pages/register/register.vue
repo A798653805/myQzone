@@ -25,7 +25,7 @@
             <el-input v-model="registerForm.nickname" class="input" size="small" placeholder="请输入用户昵称"></el-input>
           </el-form-item>
           <el-form-item label="个人简介" prop="introduction" >
-            <el-input v-model="registerForm.introduction" class="input" size="small" placeholder="请输入个人简介"></el-input>
+            <el-input type="textarea" :row="3" v-model="registerForm.introduction" class="input" size="small" placeholder="请输入个人简介"></el-input>
           </el-form-item>
           <el-form-item class="form-btn">
             <el-button type="primary" class="reg-btn" @click="submitForm('rulesForm')">注册</el-button>

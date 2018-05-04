@@ -2,8 +2,8 @@
   <div class="home">
     <div class="header-box">
       <div class="content">
-        <h1>我的空间 的空间</h1>
-        <p>我的介绍</p>
+        <h1>{{nickname}} 的空间</h1>
+        <p class="introduction">{{introduction}}</p>
         <el-button type="text" class="exit-btn">
           <i class="iconfont icon-exit"></i>退出登录
         </el-button>
@@ -40,13 +40,24 @@
   export default {
     data() {
       return {
-        activeIndex2: '1'
+        activeIndex2: '1',
+        nickname: '',
+        introduction: ''
       };
     },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      getName(){
+        this.axios.post('/api/users/getname').then((res)=>{
+          this.nickname = res.nickname;
+          this.introduction = res.introduction;
+        })
       }
+    },
+    created(){
+      this.getName();
     }
   }
 

@@ -118,7 +118,7 @@ let register = {
     register() {
       this.axios.post('/api/users/register', {
           username: this.registerForm.username,
-          password: MD5(MD5(this.registerForm.password)),
+          password: MD5(this.registerForm.password),
           nickname: this.registerForm.nickname,
           introduction: this.registerForm.introduction
         })

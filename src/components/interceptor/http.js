@@ -26,7 +26,7 @@ axios.interceptors.response.use(response => {
   // loadinginstace.close()
   let data = response.data.data;
   let code = response.data.code;
-  if (code == 'OK' || code == '200') {
+  if (code == 'OK' || code == 200) {
     return data;
   } else {
     Message.error({
