@@ -12,7 +12,7 @@
           <span class="remind">最多可以输入60个字符</span>
         </el-form-item>
         <el-form-item label="文章内容" class="quill-box" prop="content">
-          <quill-editor v-model="blogForm.content" :options="editorOption" ></quill-editor>
+          <quill-editor v-model="blogForm.content" :options="editorOption"></quill-editor>
         </el-form-item>
       </el-form>
       <div class="submit">
@@ -53,9 +53,9 @@
         width: 864px;
         height: 200px;
         border-radius: 4px;
-        
+
       }
-      .ql-snow .ql-picker{
+      .ql-snow .ql-picker {
         height: auto;
       }
     }
@@ -73,7 +73,10 @@
   import 'quill/dist/quill.bubble.css'
   import {
     quillEditor
-  } from 'vue-quill-editor'
+  } from 'vue-quill-editor';
+  import {
+    verify
+  } from "../../components/utils/verify";
   export default {
     components: {
       quillEditor,
@@ -102,9 +105,17 @@
           modules: {
             toolbar: [
               ['bold', 'italic', 'underline', 'strike'],
-              [{ 'header': [1, 2, 3, 4, 5, 6] }],
-              [{ 'size': ['small', false, 'large', 'huge'] }],
-              [{ 'color': [] }, { 'background': [] }]
+              [{
+                'header': [1, 2, 3, 4, 5, 6]
+              }],
+              [{
+                'size': ['small', false, 'large', 'huge']
+              }],
+              [{
+                'color': []
+              }, {
+                'background': []
+              }]
             ]
           }
         },
@@ -126,20 +137,37 @@
       }
     },
     methods: {
-      addBlog(){
-        this.axios.post('/api/blog/newblog',{
+      addBlog() {
+        this.axios.post('/api/blog/newblog', {
           title: this.blogForm.title,
-          content: this.blogForm.content
-        }).then(res=>{
-          this.$message({
-            message:res.message,
-            type:'success'
-          });
-          this.$router.push({
-            name: 'message'
-          })
+          content: this.blogForm.content,
+          id: this.$route.query._id || ''
+        }).then(res => {
+          if (verify(res.flag)) {
+            this.$message({
+              message: res.message,
+              type: 'success'
+            });
+            this.$router.push({
+              name: 'message'
+            })
+          }
         })
+      },
+      getBlog() {
+        console.log(this.$route.query)
+        if (this.$route.query._id) {
+          this.axios.get(`/api/blog/blogcontent?_id=${this.$route.query._id}`).then(res => {
+            if(verify(res.flag)){
+              this.blogForm.title = res.data.title;
+              this.blogForm.content = res.data.content;
+            }
+          })
+        }
       }
+    },
+    created(){
+      this.getBlog();
     }
   }
 

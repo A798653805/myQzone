@@ -62,6 +62,7 @@ import { verify } from '../../components/utils/verify';
     },
     created(){
       this.getName();
+      sessionStorage.setItem('index',1);
       this.activeIndex2 = sessionStorage.getItem('index');
     }
   }

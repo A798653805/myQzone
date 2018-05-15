@@ -18,6 +18,10 @@ let blog = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Users'
   },
+  is_remove:{
+    type: Number,
+    default: 0
+  },
   created_time:{
     type:Date,
     default: Date.now
@@ -25,4 +29,4 @@ let blog = new Schema({
 });
 
 module.exports = blog;
-
+  

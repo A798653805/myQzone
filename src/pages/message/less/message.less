@@ -24,19 +24,23 @@
   }
   .blog-list {
     .blog-item {
+      display: flex;
+      justify-content:space-between;
       padding: 5px 0;
       overflow: hidden;
       cursor: pointer;
-      .name {
-        display: inline-block;
-        font-size: 14px
-      }
-      .date {
-        float: right;
-        color: #909399;
+      .info{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 3px;
+        width: 94%;
         font-size: 14px;
+        align-items:center;
+      .date {
+        color: #909399;
         padding-right: 4px;
         margin-right: 8px;
+      }
       }
       .operation {
         float: right;

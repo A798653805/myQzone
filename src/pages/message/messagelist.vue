@@ -11,21 +11,23 @@
       <el-input class="search" clearable size="mini" placeholder="输入要搜索的博客"></el-input>
     </div>
     <div class="blog-list">
-      <div v-for="item in BlogList" :key="item._id" class="blog-item" @click="goBlogContent(item._id)">
-        <div class="name">{{item.title}}</div>
+      <div v-for="item in BlogList" :key="item._id" class="blog-item" >
+        <div class="info" @click="goBlogContent(item._id)">
+          <div class="name">{{item.title}}</div>
+          <div class="date">{{item.created_time}}</div>
+        </div>
         <div class="operation">
-          <el-dropdown>
+          <el-dropdown @command="operation">
             <span class="el-dropdown-link">
               操作
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>编辑</el-dropdown-item>
-              <el-dropdown-item>删除</el-dropdown-item>
+              <el-dropdown-item :command="0+' '+item._id">编辑</el-dropdown-item>
+              <el-dropdown-item :command="1+' '+item._id">删除</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
-        <div class="date">{{item.created_time}}</div>
       </div>
     </div>
     <div class="block">
