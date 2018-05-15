@@ -105,7 +105,13 @@ let login = {
   },
 
   created() {
-
+    if(sessionStorage.getItem('flag')){
+      this.$message({
+        message: 'token过期了，请重新登录',
+        type: 'error'
+      })
+      sessionStorage.removeItem('flag');
+    }
   },
 }
 

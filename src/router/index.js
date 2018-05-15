@@ -11,7 +11,9 @@ import Home from '../pages/home/home.vue'
 
 import AddFriend from '../pages/addFriend/addFriend.vue' //添加朋友
 import FriendList from '../pages/friendList/friendList.vue' //好友列表
-import Blog from '../pages/message/message.vue' //博客
+import Blog from '../pages/message/messagelist.vue' //博客
+import AddBlog from '../pages/message/addblog.vue' //发表文章
+import lookBlog from '../pages/message/lookblog' //查看文章
 import MessageBoard from '../pages/messageBoard/messageBoard.vue'  //浏览板
 import Mood from '../pages/mood/mood.vue'
 import MyHome from '../pages/myHome/myHome.vue' //我的主页
@@ -70,6 +72,16 @@ const router = new Router({
           path: 'message',
           name: 'message',
           component: Blog
+        },
+        {
+          path: 'addblog',
+          name: 'addblog',
+          component: AddBlog
+        },
+        {
+          path: 'lookBlog',
+          name: 'lookBlog',
+          component: lookBlog
         },
         {
           path: 'messageBoard',

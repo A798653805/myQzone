@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var jwt = require('jsonwebtoken');
-let verify = require('../utils/token')
-
-
+let verify = require('../utils/token');
+const data = require('../utils/data');
+let jwt = require('jsonwebtoken')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -118,15 +117,11 @@ router.post('/getname',function (req,res) {
        if (er) {
          console.log(er);
        } else {
-         res.json({
-           code: 200,
-           data: {
-             nickname: doc.nickname,
-             introduction: doc.introduction
-           }
-         })
+         res.json(data(200,{flag:true,nickname:doc.nickname,introduction:doc.introduction}))
        }
     })
+  }else{
+    res.json(data(200,{flag: false,message: '登录过期'}));
   }
 })
 

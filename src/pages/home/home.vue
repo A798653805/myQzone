@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { verify } from '../../components/utils/verify';
   export default {
     data() {
       return {
@@ -47,17 +48,21 @@
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        sessionStorage.setItem('index',key);
+        this.activeIndex2 = sessionStorage.getItem('index');
       },
       getName(){
         this.axios.post('/api/users/getname').then((res)=>{
-          this.nickname = res.nickname;
-          this.introduction = res.introduction;
+         if(verify(res.flag)){
+           this.nickname = res.nickname;
+           this.introduction = res.introduction;
+         }
         })
       }
     },
     created(){
       this.getName();
+      this.activeIndex2 = sessionStorage.getItem('index');
     }
   }
 

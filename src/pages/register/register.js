@@ -41,12 +41,6 @@ let register = {
             trigger: 'blur'
           },
           {
-            min: 6,
-            max: 14,
-            message: '长度在 6 到 14 个字符',
-            trigger: 'blur'
-          },
-          {
             pattern: /^[a-zA-Z0-9_-]{6,14}$/,
             message: '请使用字母，数字，下划线',
             trigger: 'blur'
@@ -76,12 +70,6 @@ let register = {
         repassword: [{
             required: true,
             message: '请再次输入密码',
-            trigger: 'blur'
-          },
-          {
-            min: 6,
-            max: 14,
-            message: '长度在 6 到 14 个字符',
             trigger: 'blur'
           },
           {
