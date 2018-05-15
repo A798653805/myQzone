@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import {
-  // Loading,
   Message
 } from 'element-ui'
 import Cookie from "js-cookie";
@@ -112,7 +111,7 @@ router.beforeEach((to,from,next)=>{
   if (userInfo) {//如果有就直接到首页咯
     next();
   } else {
-    if (to.path == '/login' || to.path == '/register') {//如果是登录页面路径，就直接next()
+    if (to.path == '/login' || to.path == '/register' || to.path == '/neng') {//如果是登录页面路径，就直接next()
       next();
     } else {//不然就跳转到登录；
       next('/login');

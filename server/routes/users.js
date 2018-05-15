@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
+let verify = require('../utils/token')
 
 
 
@@ -77,12 +78,12 @@ router.post('/login',function (req,res) {
     }else{
       console.log(doc)
       if(doc){
-        var token = jwt.sign(userInfo, "LISHAOSHIYIGEHAOBAOBAO",{
-                    expiresIn: 60*60  // 24小时过期
+        console.log(doc._id)
+        var token = jwt.sign({user:doc._id}, global.secret, {
+                    expiresIn: 60*60*24  // 24小时过期
                 })
-        console.log(req.session);
         res.cookie('token', token,{
-          maxAge: 600000,
+          maxAge: 6000000,
           httpOnly: true //有助于防范xxs攻击
         })
         res.json({
@@ -107,30 +108,26 @@ router.post('/login',function (req,res) {
 })
 
 router.post('/getname',function (req,res) {
-  jwt.verify(req.cookies.token, "LISHAOSHIYIGEHAOBAOBAO", function (err, decode) {
-    if(err){
-      console.log(err)
-    }else{
-      var userInfo = {
-        username: decode.username,
-        password: decode.password
-      }
-      User.findOne(userInfo,function(er,doc){
-        if(er){
-          console.log(er);
-        }else{
-          res.json({
-            code: 200,
-            data: {
-              nickname: doc.nickname,
-              introduction: doc.introduction
-            }
-          })
-        }
-      })
+  let user = verify(req.cookies.token)
+  console.log(user)
+  if(user){
+    var userInfo = {
+      _id: user
     }
-  })
-
+     User.findOne(userInfo, function (er, doc) {
+       if (er) {
+         console.log(er);
+       } else {
+         res.json({
+           code: 200,
+           data: {
+             nickname: doc.nickname,
+             introduction: doc.introduction
+           }
+         })
+       }
+    })
+  }
 })
 
 module.exports = router;

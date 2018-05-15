@@ -10,6 +10,7 @@ var session = require('express-session')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var photo = require('./routes/photo');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/photo',photo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,6 +65,9 @@ db.on('connected',()=>{
 db.on('error',()=>{
   console.log('连接失败');
 });
+
+global.secret = "LISHAOSHIYIGEHAOBAOBAO"
+
 
 
 module.exports = app;

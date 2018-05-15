@@ -26,62 +26,6 @@
           </div>
           <div class="date">10月10日</div>
         </li>
-        <li class="blog-item">
-          <div class="name">你是大傻子</div>
-          <div class="date">10月10日</div>
-          <div class="menu"></div>
-        </li>
-        <li class="blog-item">
-          <div class="name">你是大傻子</div>
-          <div class="date">10月10日</div>
-        </li>
-        <li class="blog-item">
-          <div class="name">你是大傻子</div>
-          <div class="date">10月10日</div>
-        </li>
-        <li class="blog-item">
-          <div class="name">你是大傻子</div>
-          <div class="date">10月10日</div>
-        </li>
-        <li class="blog-item">
-          <div class="name">你是大傻子</div>
-          <div class="date">10月10日</div>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
-          <li class="blog-item">
-            <div class="name">你是大傻子</div>
-            <div class="date">10月10日</div>
-          </li>
       </ul>
     </div>
     <div class="block">
