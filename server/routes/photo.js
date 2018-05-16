@@ -7,12 +7,33 @@ let multiparty = require('multiparty');
 let data = require('../utils/data');
 
 router.post('/upload', (req, res) => {
-  // let user = verify(req.cookies.token);
-  // if(user){
-  //   let photoInfo = {
-
-  //   }
-  // }
+  const user = verify(req.cookies.token);
+  if(user){
+    let form = new multiparty.Form({
+      uploadDir: './public/photos'
+    });
+    form.parse(req, (err, fields, files) => {
+      if(err){
+        console.log('parse err:'+err);
+      }else{
+        console.log(files);
+        let inputFile = files.file[0];
+        let uploadedPath = inputFile.path;
+        let filename = uploadedPath.split('//');
+        inputFile.originalFilename = uploadedPath.split('\\')[2];
+        let dstpath = `/api/photos/${inputFile.originalFilename}`;
+        res.json(data({
+          flag: true,
+          data: dstpath
+        }))
+      }
+    })
+  }else{
+    res.json(data({
+      flag: 200,
+      message: 'token过期，请重新登录'
+    }))
+  }
 })
 
 router.post('/addList', (req, res) => {
@@ -95,6 +116,18 @@ router.post('/delList', (req, res) => {
       }))
     })
   } else {
+    res.json(data({
+      flag: false,
+      message: 'token过期，请重新登录'
+    }))
+  }
+})
+
+router.post('/submitData',(req,res)=>{
+  const user = verify(req.cookies.token);
+  if(user){
+
+  }else{
     res.json(data({
       flag: false,
       message: 'token过期，请重新登录'
