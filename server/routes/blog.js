@@ -23,7 +23,7 @@ router.post('/newblog', (req, res) => {
       if (!req.body.id) {
         const mongoInsert = new Blog(info);
         mongoInsert.save();
-        res.json(data(200, {
+        res.json(data({
           flag: true,
           message: '发表成功'
         }));
@@ -34,7 +34,7 @@ router.post('/newblog', (req, res) => {
           doc.title = info.title;
           doc.content = info.content;
           doc.save();
-          res.json(data(200, {
+          res.json(data({
             flag: true,
             message: '修改成功'
           }));
@@ -43,28 +43,75 @@ router.post('/newblog', (req, res) => {
 
     })
   } else {
-    res.json(data(200, {
+    res.json(data({
       flag: false,
       message: '登录过期'
     }));
   }
 })
 
-
 router.post('/blogList', (req, res) => {
   const user = verify(req.cookies.token);
   if (user) {
-    Blog.find({
-      user_id: user
-    }).exec((err, doc) => {
-      const list = doc.filter(item => item.is_remove == 0)
-      res.json(data(200, {
-        flag: true,
-        data: list
-      }))
-    })
+    let info = {
+      pageNum: req.body.pageNum,
+      pageSize: req.body.pageSize,
+      title: req.body.title
+    }
+    if (info.title!= '') {
+      let reg = new RegExp(info.title, 'i');
+      Blog.find({
+        title: {
+          $regex: reg
+        },
+        is_remove: 0
+      }).skip((info.pageNum - 1) * info.pageSize).limit(info.pageSize).exec((err, doc) => {
+            Blog.find({
+              title: {
+                $regex: reg
+              },
+              is_remove: 0
+            }).exec((err, result) => {
+              if (result.length > 0) {
+                res.json(data({
+                  flag: true,
+                  data: doc,
+                  total: result.length
+                }))
+              } else {
+                res.json(data({
+                  flag: true,
+                  message: '没有相关数据'
+                }))
+              }
+            })
+          })
+    }else{
+      Blog.find({
+        user_id: user,
+        is_remove: 0
+      }).skip((info.pageNum - 1) * info.pageSize).limit(info.pageSize).exec((err, doc) => {
+        Blog.find({
+          user_id: user,
+          is_remove: 0
+        }).exec((err, result) => {
+          if (result.length > 0) {
+            res.json(data({
+              flag: true,
+              data: doc,
+              total: result.length
+            }))
+          }else{
+            res.json(data({
+              flag: true,
+              message: '没有相关数据'
+            }))
+          }
+        })
+      })
+    }
   } else {
-    res.json(data(200, {
+    res.json(data({
       flag: false,
       message: '登录过期'
     }));
@@ -78,13 +125,13 @@ router.get('/blogcontent', (req, res) => {
     Blog.findOne({
       _id: req.query._id
     }).exec((err, doc) => {
-      res.json(data(200, {
+      res.json(data( {
         flag: true,
         data: doc
       }))
     })
   } else {
-    res.json(data(200, {
+    res.json(data({
       flag: false,
       message: '登录过期'
     }));
@@ -101,12 +148,12 @@ router.post('/delblog', (req, res) => {
       doc.is_remove = 1;
       doc.save()
     })
-    res.json(data(200, {
+    res.json(data({
       flag: true,
       message: '删除成功'
     }))
   } else {
-    res.json(data(200, {
+    res.json(data({
       flag: false,
       message: '登录过期'
     }));

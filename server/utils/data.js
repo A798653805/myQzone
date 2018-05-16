@@ -1,6 +1,6 @@
-module.exports = data = (status,data)=>{
+module.exports = data = (data)=>{
   return {
-    code: status,
+    code: 200,
     data: data
   }
 }

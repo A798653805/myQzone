@@ -7,11 +7,11 @@
     </div>
     <div class="funtion-box">
       <el-button size="mini" type="primary" @click="goNewBlog">新建文章</el-button>
-      <el-button class="search-btn" size="mini" type="primary">查询</el-button>
-      <el-input class="search" clearable size="mini" placeholder="输入要搜索的博客"></el-input>
+      <el-button class="search-btn" size="mini" type="primary" @click="getBlogList">查询</el-button>
+      <el-input class="search" v-model="search" clearable size="mini" placeholder="输入要搜索的博客"></el-input>
     </div>
-    <div class="blog-list">
-      <div v-for="item in BlogList" :key="item._id" class="blog-item" >
+    <div class="blog-list" v-show="!nodata">
+      <div v-for="item in BlogList" :key="item._id" class="blog-item">
         <div class="info" @click="goBlogContent(item._id)">
           <div class="name">{{item.title}}</div>
           <div class="date">{{item.created_time}}</div>
@@ -30,9 +30,16 @@
         </div>
       </div>
     </div>
-    <div class="block">
-      <el-pagination layout="prev, pager, next" :page-size="15" :total="16">
+    <div class="block" v-show="!nodata">
+      <el-pagination @current-change="handleCurrentChange" 
+                    :current-page.sync="currentPage" 
+                    :page-size="pageSize"
+                    layout="total, prev, pager, next" 
+                    :total="total">
       </el-pagination>
+    </div>
+    <div v-show="nodata">
+      没有相关数据
     </div>
   </div>
 </template>

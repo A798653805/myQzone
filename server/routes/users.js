@@ -108,7 +108,6 @@ router.post('/login',function (req,res) {
 
 router.post('/getname',function (req,res) {
   let user = verify(req.cookies.token)
-  console.log(user)
   if(user){
     var userInfo = {
       _id: user
@@ -117,11 +116,11 @@ router.post('/getname',function (req,res) {
        if (er) {
          console.log(er);
        } else {
-         res.json(data(200,{flag:true,nickname:doc.nickname,introduction:doc.introduction}))
+         res.json(data({flag:true,nickname:doc.nickname,introduction:doc.introduction}))
        }
     })
   }else{
-    res.json(data(200,{flag: false,message: '登录过期'}));
+    res.json(data({flag: false,message: '登录过期'}));
   }
 })
 

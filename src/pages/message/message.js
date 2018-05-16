@@ -4,6 +4,11 @@ let blog = {
   data() {
     return {
       BlogList: [],
+      currentPage: 1,//当前页码
+      pageSize: 15,
+      total: 0,
+      search: '',
+      nodata: false
     };
   },
   methods: {
@@ -13,28 +18,37 @@ let blog = {
       })
     },
     getBlogList(){
-      this.axios.post('/api/blog/bloglist').then((res)=>{
+      this.axios.post('/api/blog/bloglist',{
+        pageSize: this.pageSize,
+        pageNum: this.currentPage,
+        title: this.search
+      }).then((res)=>{
         console.log(res);
         if(verify(res.flag)){
-          this.BlogList = res.data.map(item=>{
-            item.created_time = moment(item.created_time).format("YYYY-MM-DD")
-            return item
-          });
-          console.log(this.BlogList)
+          if(res.data){
+            this.BlogList = res.data.map(item => {
+              item.created_time = moment(item.created_time).format("YYYY-MM-DD")
+              return item
+            });
+            this.total = res.total;
+          }else{
+            this.nodata = true
+          }
         }
       })
+    },
+    handleCurrentChange(val){     
+      this.getBlogList();
     },
     goBlogContent(data){
       this.$router.push({
         path: `/home/lookBlog?_id=${data}`
       })
     },
-
     operation(command){
       let status = command.split(' ')[0];
       let id = command.split(' ')[1];
       if (status == 0) {
-        //编辑
         this.$router.push({
           path: `/home/addblog?_id=${id}`
         })
@@ -45,15 +59,16 @@ let blog = {
           if(verify(res.flag)){
             this.$message({
               message: res.message,
-              type: 'error'
+              type: 'success'
             });
-            this.getBlogList();
+            if(this.total%this.currentPage == 0){
+              this.currentPage -= 1;
+            this.getBlogList();               
+            }
           }
         })
-
       }
-    }
-
+    },
   },
   created() {
     this.getBlogList();

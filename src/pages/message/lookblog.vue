@@ -10,11 +10,12 @@
         {{blog.title}}
       </div>
       <div class="aticle-funtion">
-        <div class="date">{{blog.date}}</div>
-        <div class="author">{{blog.author}}</div>
+        <div class="date">时间:{{blog.date}}</div>
+        <div class="author">作者:{{blog.author}}</div>
         <div class="funtion-btn">
           <el-button type="primary" @click="editArticle">编辑</el-button>
           <el-button type="danger" @click="delArticle">删除</el-button>
+          <el-button @click="returnList">返回列表</el-button>
         </div>
       </div>
       <div class="blog-contetn" v-html="blog.content"></div>
@@ -86,6 +87,11 @@
             this.blog.author = res.data.author;
           }
         }).catch(e => console.log(e));
+      },
+      returnList(){
+        this.$router.push({
+          name:'message'
+        })
       },
       editArticle(){
         this.$router.push({
