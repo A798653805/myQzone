@@ -5,6 +5,7 @@ let PhotoList = require('../models/photoList');
 let verify = require('../utils/token');
 let multiparty = require('multiparty');
 let data = require('../utils/data');
+let Photo = require('../models/photo');
 
 router.post('/upload', (req, res) => {
   const user = verify(req.cookies.token);
@@ -126,6 +127,19 @@ router.post('/delList', (req, res) => {
 router.post('/submitData',(req,res)=>{
   const user = verify(req.cookies.token);
   if(user){
+    req.body.data.forEach(item => {
+      let info = {
+        photo_path: item,
+        photo_list_id: req.body.id
+      };
+      const mongoInsert = new Photo(info);
+      mongoInsert.save();
+    });
+    res.json(data({
+      flag: true,
+      message: '上传成功'
+    }))
+
 
   }else{
     res.json(data({
@@ -135,6 +149,58 @@ router.post('/submitData',(req,res)=>{
   }
 })
 
+router.get('/getpic',(req,res)=>{
+  const user = verify(req.cookies.token);
+  if(user){
+    Photo.find({
+      photo_list_id: req.query._id,
+      is_remove: 0
+    }).exec((err,doc)=>{
+      if(doc.length>0){
+        res.json(data({
+          flag: true,
+          data: doc
+        }))
+      }else{
+        res.json(data({
+          flag: true,
+          message: '没有数据'
+        }))
+      }
+    })
+  }else{
+    res.json(data({
+      flag: false,
+      message: 'token过期，请重新登录'
+    }))
+  }
+})
+
+router.post('/delpic',(req,res)=>{
+  const user = verify(req.cookies.token);
+  if(user){
+    let dataList = req.body.photoList.map(item=>{
+      return {_id: item}
+    });
+    Photo.find({
+      $or: dataList
+    }).exec((err,doc)=>{
+      doc.forEach(item=>{
+        item.is_remove = 1;
+        item.save();
+      });
+      res.json(data({
+        flag: true,
+        message: '删除成功'
+      }))
+    })
+  }else{
+    req.json(data({
+      flag:false,
+      message: 'token过期，请重新登录'
+    }))
+  }
+})
 
 
 module.exports = router;
