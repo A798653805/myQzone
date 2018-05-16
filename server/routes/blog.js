@@ -95,6 +95,7 @@ router.post('/blogList', (req, res) => {
           user_id: user,
           is_remove: 0
         }).exec((err, result) => {
+          console.log(doc);
           if (result.length > 0) {
             res.json(data({
               flag: true,
@@ -157,6 +158,35 @@ router.post('/delblog', (req, res) => {
       flag: false,
       message: '登录过期'
     }));
+  }
+})
+
+router.post('/isexist',(req,res)=>{
+  const user = verify(req.cookies.token);
+  if(user){
+    Blog.findOne({
+      title: req.body.title,
+      user_id: user
+    }).exec((err,doc)=>{
+      if(doc){
+        res.json(data({
+          flag:true,
+          u_flag: true,
+          message: '该标题已经存在'
+        }))
+      }else{
+        res.json(data({
+          flag:true,
+          u_flag: false,
+          message: '该标题可以注册'
+        }))
+      }
+    })
+  }else{
+    res.json(data({
+      flag: false,
+      message: '登录过期'
+    }))
   }
 })
 

@@ -23,7 +23,7 @@
       justify-content: flex-start;
     
     .photo-item {
-      margin: 10px 8px 0;
+      margin: 10px 7px 0;
       border: 1px solid #c0c4cc;
       padding: 8px;
       box-shadow: 0px 0px 1px 0px #000;
@@ -32,11 +32,20 @@
         .photo-img {
           width: 157px;
           height: 157px;
+          border: 1px solid #c0c4cc;
         }
         .photo-name {
           padding: 4px;
           color: #606266;
           font-size: 14px;
+          .name{
+            display: inline-block;
+            max-width: 84px;
+            overflow: hidden;
+           
+text-overflow:ellipsis;
+white-space: nowrap;
+          }
           .el-button{
             float: right;
             margin-left: 4px;

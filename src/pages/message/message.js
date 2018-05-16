@@ -61,9 +61,11 @@ let blog = {
               message: res.message,
               type: 'success'
             });
-            if(this.total%this.currentPage == 0){
+            if (this.total /this.pageSize>0&& this.total % this.pageSize == 0) {
               this.currentPage -= 1;
-            this.getBlogList();               
+              this.getBlogList();               
+            }else{
+              this.getBlogList();
             }
           }
         })

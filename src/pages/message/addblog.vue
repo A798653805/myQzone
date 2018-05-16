@@ -16,7 +16,7 @@
         </el-form-item>
       </el-form>
       <div class="submit">
-        <el-button type="primary" @click="addBlog">发表</el-button>
+        <el-button type="primary" @click="addBlog('form')">发表</el-button>
         <el-button>取消</el-button>
       </div>
     </div>
@@ -82,20 +82,6 @@
       quillEditor,
     },
     data() {
-      let validateUname = (rule, value, callback) => {
-        this.axios.post('/api/users/uname', {
-          username: this.blogForm.title
-        }).then((res) => {
-          if (res.flag) {
-            callback(new Error('文章标题已存在'));
-          } else {
-            callback();
-          }
-        }).catch((err) => {
-          console.log(err);
-          return false;
-        })
-      }
       return {
         blogForm: {
           title: '',
@@ -105,9 +91,6 @@
           modules: {
             toolbar: [
               ['bold', 'italic', 'underline', 'strike'],
-              [{
-                'header': [1, 2, 3, 4, 5, 6]
-              }],
               [{
                 'size': ['small', false, 'large', 'huge']
               }],
@@ -124,9 +107,6 @@
             required: true,
             message: '请输入文章标题',
             trigger: 'blur'
-          }, {
-            validator: validateUname,
-            trigger: 'blur'
           }],
           content: [{
             required: true,
@@ -137,28 +117,42 @@
       }
     },
     methods: {
-      addBlog() {
-        this.axios.post('/api/blog/newblog', {
-          title: this.blogForm.title,
-          content: this.blogForm.content,
-          id: this.$route.query._id || ''
-        }).then(res => {
-          if (verify(res.flag)) {
-            this.$message({
-              message: res.message,
-              type: 'success'
-            });
-            this.$router.push({
-              name: 'message'
+      addBlog(formName) {
+        console.log(this.$refs[formName])
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            if(this.blogForm.content){
+              this.axios.post('/api/blog/newblog', {
+              title: this.blogForm.title,
+              content: this.blogForm.content,
+              id: this.$route.query._id || ''
+            }).then(res => {
+              if (verify(res.flag)) {
+                this.$message({
+                  message: res.message,
+                  type: 'success'
+                });
+                this.$router.push({
+                  name: 'message'
+                })
+              }
             })
+            }else{
+              new Error('请输入内容')
+            }
+            
+          } else {
+            console.log('error submit!!');
+            return false;
           }
-        })
+        });
+
       },
       getBlog() {
         console.log(this.$route.query)
         if (this.$route.query._id) {
           this.axios.get(`/api/blog/blogcontent?_id=${this.$route.query._id}`).then(res => {
-            if(verify(res.flag)){
+            if (verify(res.flag)) {
               this.blogForm.title = res.data.title;
               this.blogForm.content = res.data.content;
             }
@@ -166,7 +160,7 @@
         }
       }
     },
-    created(){
+    created() {
       this.getBlog();
     }
   }

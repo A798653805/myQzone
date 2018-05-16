@@ -11,7 +11,7 @@ let photoList = new Schema({
   },
   cover:{
     type: String,
-    default: " \/photos\/timg.jpg"
+    default: " \/api\/photos\/timg.jpg"
   },
   is_remove:{
     type:Number,
