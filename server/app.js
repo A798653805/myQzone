@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var photo = require('./routes/photo');
 let blog = require('./routes/blog');
+let friend = require('./routes/friend');
 
 var app = express();
 
@@ -38,7 +39,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/photo',photo);
 app.use('/blog',blog);
-
+app.use('/friend',friend);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

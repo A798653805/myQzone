@@ -20,5 +20,6 @@ let friend = new Schema({
   }
 });
 
-module.exports = blog;
+module.exports = friend;
+
 

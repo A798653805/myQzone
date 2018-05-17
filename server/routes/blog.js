@@ -4,7 +4,7 @@ const User = require('../models/user');
 const verify = require('../utils/token');
 const Blog = require('../models/blog');
 const data = require('../utils/data');
-const UserB = require('../models/user-blog');
+
 
 
 /* GET home page. */

@@ -139,8 +139,6 @@ router.post('/submitData',(req,res)=>{
       flag: true,
       message: '上传成功'
     }))
-
-
   }else{
     res.json(data({
       flag: false,

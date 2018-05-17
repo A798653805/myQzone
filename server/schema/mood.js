@@ -14,9 +14,9 @@ let message = new Schema({
     type: Number,
     default: 0
   },
-  status:{
+  status: {
     type: Number,
-    default: 2   //0拒绝 1成功 2未处理
+    default: 2 //0拒绝 1成功 2未处理
   },
   created_time: {
     type: Date,
@@ -25,5 +25,4 @@ let message = new Schema({
 });
 
 module.exports = message;
-
 
