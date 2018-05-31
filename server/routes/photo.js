@@ -132,6 +132,12 @@ router.post('/submitData',(req,res)=>{
         photo_path: item,
         photo_list_id: req.body.id
       };
+      PhotoList.findOne({
+        _id: info.photo_list_id
+      },(err,doc)=>{
+        ++doc.photo_num;
+        doc.save();
+      })
       const mongoInsert = new Photo(info);
       mongoInsert.save();
     });

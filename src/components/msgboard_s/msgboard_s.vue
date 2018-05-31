@@ -4,36 +4,21 @@
         留言板
       </div>
       <div class="text-box">
-        <el-input type="textarea" class="input" :rows="3"></el-input>
-        <el-button class="sub-msg" size="mini" type="primary">发表</el-button>
+        <el-input type="textarea" class="input" :rows="3" v-model="content"></el-input>
+        <el-button class="sub-msg" size="mini" type="primary" @click="sendMsg">发表</el-button>
       </div>
       <ul>
-        <li class="msg-item">
+        <li class="msg-item" v-for="item in msgArr" :key="item._id">
           <div class="msg">
-            <span class="name">下没声:</span>
-            <p>你是我的加快速度副教授积分时代峻峰考虑到开了房间</p>
+            <span class="name">{{item.user_id.nickname}}:</span>
+            <p>{{item.content}}</p>
           </div>
-          <div class="date">2010-10-10</div>
-        </li>
-        <li class="msg-item">
-          <div class="msg">
-            <span class="name">下没声:</span>
-            <p>你是我的加快速度副教授积分时代峻峰考虑到开了房间</p>
-          </div>
-          <div class="date">2010-10-10</div>
-        </li>
-        <li class="msg-item">
-          <div class="msg">
-            <span class="name">下没声:</span>
-            <p>你是我的加快速度副教授积分时代峻峰考虑到开了房间</p>
-          </div>
-          <div class="date">2010-10-10</div>
+          <!-- <div class="date">2010-10-10</div> -->
         </li>
       </ul>
-      <el-button class="msg" type="text">查看更多留言</el-button>
+      <el-button class="msg" type="text" @click="goMsg">查看更多留言</el-button>
     </div>
 </template>
-
 
 <style lang="less">
    .msgboard-box {
@@ -85,3 +70,49 @@
     }
   }
 </style>
+
+<script>
+import { verify } from '../../components/utils/verify';
+export default {
+  data(){
+    return {
+      msgArr: [],
+      content: '',
+      target: this.$route.query.friend || '',
+    }
+  },
+  methods:{
+    goMsg(){
+      this.$router.push({
+        name: 'messageBoard'
+      })
+    },
+    getMsg(){
+      this.axios.post('/api/msg/getmsg').then(res=>{
+        if(verify(res.flag)){
+          this.msgArr = res.data.map(item=>item);
+          console.log('222222',this.msgArr);
+        }
+      })
+    },
+    sendMsg(){
+         this.axios.post('/api/msg/sendmsg',{
+        target: this.target,
+        content: this.content
+      }).then(res=>{
+        if(verify(res.flag)){
+          this.$message({
+            message: res.message,
+            type: 'success'
+          })
+          this.getMsg();
+        }
+      })
+    }
+  },
+  created(){
+    this.getMsg();
+  }
+}
+</script>
+

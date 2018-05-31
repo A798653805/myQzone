@@ -3,8 +3,9 @@
     <overview></overview>
     <div class="dynamic-box">
       <ul>
-        <li v-for="item in items">
-          <dywindow name="小少爷" msg="不想弄" :goodNum="item.goods"></dywindow>
+        <li v-for="item in mood" :key="item._id">
+          <dywindow :name="item.user_id.nickname" :msg="item.content" :id="item._id" @del='delonly(item._id)' @good="good(item._id)"
+          :goodNum="item.good_num.length"></dywindow>
         </li>
       </ul>
     </div>

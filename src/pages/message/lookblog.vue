@@ -84,7 +84,7 @@
             this.blog.title = res.data.title;
             this.blog.content = res.data.content;
             this.blog.date = moment(res.data.date).format('YYYY-MM-DD');
-            this.blog.author = res.data.author;
+            this.blog.author = res.data.user_id.nickname;
           }
         }).catch(e => console.log(e));
       },

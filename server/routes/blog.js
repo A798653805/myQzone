@@ -125,7 +125,7 @@ router.get('/blogcontent', (req, res) => {
   if (user) {
     Blog.findOne({
       _id: req.query._id
-    }).exec((err, doc) => {
+    }).populate('user_id').exec((err, doc) => {
       res.json(data( {
         flag: true,
         data: doc

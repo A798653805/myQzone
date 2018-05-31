@@ -13,6 +13,8 @@ var users = require('./routes/users');
 var photo = require('./routes/photo');
 let blog = require('./routes/blog');
 let friend = require('./routes/friend');
+let mood = require('./routes/mood');
+let msg = require('./routes/msg');
 
 var app = express();
 
@@ -40,6 +42,10 @@ app.use('/users', users);
 app.use('/photo',photo);
 app.use('/blog',blog);
 app.use('/friend',friend);
+app.use('/mood',mood);
+app.use('/msg',msg);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

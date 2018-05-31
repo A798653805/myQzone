@@ -1,3 +1,6 @@
+import {
+  verify
+} from '../../components/utils/verify';
 
 let dynamic = {
     props: {
@@ -10,15 +13,18 @@ let dynamic = {
         goodNum: {
             type:Number,
             default: 0,
-        }
+        },
+        id: {
 
+        }
     },
     data () {
         return {
             rows: 1,
             subFlage: false,
             replyFlage: false,
-            niceNum: this.goodNum
+            niceNum: this.goodNum,
+            commentFlag: false,
         }
     },
     methods: {
@@ -43,8 +49,15 @@ let dynamic = {
          * 点赞功能
          */
         touchNice() {
-            this.niceNum++;
+           this.$emit('good');
+        },
+        delonly(){
+           this.$emit('del');
+        },
+        comment(){
+            this.$emit('comment')
         }
+
     }
 }
 

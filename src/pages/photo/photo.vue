@@ -18,10 +18,6 @@
         </div>
       </div>
     </div>
-    <div class="block">
-      <el-pagination layout="prev, pager, next" :page-size="15" :total="16">
-      </el-pagination>
-    </div>
     <el-dialog title="新建相册" :visible.sync="dialogFormVisible" :center="true">
       <el-form :model="form" :rules="rules">
         <el-form-item label="相册名称" prop="title">

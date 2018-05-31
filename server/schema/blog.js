@@ -8,12 +8,6 @@ let blog = new Schema({
   content:{
     type: String
   },
-  author:{
-    type: String
-  },
-  comment:{
-    type: Array
-  },
   user_id:{
     type: Schema.Types.ObjectId,
     ref: 'Users'

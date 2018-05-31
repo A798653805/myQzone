@@ -1,27 +1,27 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let mood = new Schema({
+let msg = new Schema({
   user_id: {
     type: Schema.Types.ObjectId,
     ref: 'Users'
   },
-  content: {
-    type: String
+  target:{
+    type: Schema.Types.ObjectId,
+    ref: 'Users'
   },
-  good_num:{
-    type: Array,
-    default: []
+  content:{
+    type: String,
   },
-  is_remove: {
+  is_remove:{
     type: Number,
     default: 0
   },
-  created_time: {
+  created_time:{
     type: Date,
-    default: Date.now
+    default: Date.now()
   }
 });
 
-module.exports = mood;
+module.exports = msg;
 
